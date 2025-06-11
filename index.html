@@ -1,18 +1,16 @@
-
-[19:00, 11.06.2025] .: …
-[19:04, 11.06.2025] .: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Özzirve Office Kırtasiye</title>
+<title>Kırtasiye Ürünler</title>
 <style>
   body {
     font-family: Arial, sans-serif;
     background: #f9f9f9;
     color: #333;
     padding: 20px;
-    max-width: 900px;
+    max-width: 1200px;
     margin: auto;
   }
   h1 {
@@ -34,60 +32,143 @@
     margin: 0 auto 30px auto;
   }
 
-  /* Yeni profesyonel ve gölgelik accordion başlıkları */
-  .accordion {
-    background-color: #34495e;  /* şık koyu mavi-gri */
-    color: #ecf0f1;             /* açık yazı */
-    cursor: pointer;
-    padding: 18px 25px;
-    margin-top: 20px;
-    border-radius: 12px;
-    border: none;
-    font-weight: 700;
-    font-size: 1.25em;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: background-color 0.3s ease;
+  /* Üst ikonlar ve mesaj */
+  .top-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 10px;
     user-select: none;
   }
-  .accordion:hover {
-    background-color: #2c3e50;
+  .icon-wrapper {
+    position: relative;
+    cursor: pointer;
+    color: #c0392b; /* kırmızı şık renk */
+    font-size: 30px;
   }
-
-  /* Panel kısmı - açılır alan */
-  .panel {
-    background-color: #f5f7fa;  /* açık gri arka plan */
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 20px 30px;
-    margin-bottom: 10px;
+  .icon-wrapper svg {
+    vertical-align: middle;
+    width: 36px;
+    height: 36px;
+    fill: #c0392b;
+    transition: fill 0.3s ease;
+  }
+  .icon-wrapper:hover svg {
+    fill: #e74c3c;
+  }
+  .tooltip {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #c0392b;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    white-space: nowrap;
     display: none;
+    pointer-events: none;
+    user-select: none;
+    z-index: 10;
+  }
+  .icon-wrapper.show-tooltip .tooltip {
+    display: block;
   }
 
-  /* Ürün kutuları */
-  .urun {
-    background-color: #ffffff;
-    padding: 12px 18px;
-    margin-bottom: 12px;
+  .delivery-text {
+    text-align: center;
+    font-weight: 600;
+    color: #c0392b;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    user-select: none;
+  }
+
+  /* 4 ürün kutusu yatay mobil ve pc */
+  .boxes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .box {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 15px;
+    flex: 1 1 22%; /* yaklaşık 4 kutu yan yana genişliği */
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+  }
+
+  /* Başlık */
+  .box h3 {
+    margin: 0 0 10px 0;
+    color: #34495e;
+    font-weight: 700;
+    font-size: 1.1em;
+    text-align: center;
+  }
+
+  /* Ürün liste alanı - yatay kayan */
+  .product-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: #c0392b #f0f0f0;
+  }
+  .product-list::-webkit-scrollbar {
+    height: 8px;
+  }
+  .product-list::-webkit-scrollbar-thumb {
+    background-color: #c0392b;
     border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    font-weight: 500;
+  }
+  .product-list::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
+
+  /* Ürün kartları */
+  .urun {
+    min-width: 160px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    padding: 10px 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     color: #2c3e50;
-    transition: background-color 0.25s ease;
+    font-weight: 500;
+    white-space: normal;
+    flex-shrink: 0;
+    user-select: text;
+    cursor: default;
   }
   .urun:hover {
-    background-color: #e1e8f0;
+    background-color: #d6dbdf;
   }
 
-  /* Tüm ürünleri aç/kapa butonu */
-  #toggleAll {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 1.2em;
-    font-weight: 600;
-    color: #2c3e50;
-    cursor: pointer;
-    user-select: none;
+  /* Mobilde kutuları alt alta yap */
+  @media screen and (max-width: 768px) {
+    .boxes-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .box {
+      flex: 1 1 90%;
+      max-width: 100%;
+    }
+    .product-list {
+      justify-content: start;
+    }
   }
+
+  /* Accordion kaldırıldı - istek üzerine kapatıldı */
 
   footer {
     margin-top: 40px;
@@ -97,78 +178,91 @@
     color: #555;
     text-align: center;
     line-height: 1.6;
+    user-select: none;
   }
 </style>
 </head>
 <body>
 
 <h1>Özzirve Office'e Hoş Geldiniz</h1>
-<img src="özzirvekırtasiye(1)(1).png" alt="Özzirve Kırtasiye Logo">
+<img src="özzirvekırtasiye(1)(1).png" alt="Özzirve Kırtasiye Logo" />
 
-<h2>Özzirve Office Kırtasiye Ürünleri</h2>
+<h2>Kırtasiye Ürünler</h2>
 
-<div id="toggleAll">▼ Ürünleri Göster / Gizle</div>
-
-<button class="accordion">A4, A3, A5 Kağıt ve Benzerleri</button>
-<div class="panel">
-  <div class="urun">A3 kağıt 500'lü paket</div>
-  <div class="urun">A5 kağıt 500'lü paket</div>
-  <div class="urun">Nagivator A4 kağıt 160 gr 250'li paket</div>
-  <div class="urun">Kraft kağıt A4 100'lü paket</div>
+<!-- Üst ikonlar -->
+<div class="top-icons">
+  <div class="icon-wrapper" id="kargo-icon" title="Siparişleriniz de aynı gün teslimat">
+    <!-- Kargo arabası SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+      <path d="M6 48a6 6 0 1 0 12 0 6 6 0 0 0-12 0zm38 0a6 6 0 1 0 12 0 6 6 0 0 0-12 0zM20 12h26l8 16v12H18v-4l2-8z" />
+    </svg>
+    <div class="tooltip">Siparişleriniz de aynı gün teslimat</div>
+  </div>
+  <div class="icon-wrapper" id="ev-icon" title="26 Yıllık Deneyim">
+    <!-- Ev SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+      <path d="M32 12 L12 32 H20 V52 H28 V40 H36 V52 H44 V32 H52 Z" />
+    </svg>
+    <div class="tooltip">26 Yıllık Deneyim</div>
+  </div>
 </div>
 
-<button class="accordion">Zarflar</button>
-<div class="panel">
-  <div class="urun">Diplomat zarf boyut 105x240 500'lü paket</div>
-  <div class="urun">Kare zarf boyut 114x162 500'lü paket</div>
-  <div class="urun">CD zarf pencereli 1.000'li paket</div>
-  <div class="urun">A5 zarf kağıt boyut 17x25 250'li paket</div>
-  <div class="urun">A4 zarf kağıt boyut 24x32 250'li paket</div>
-  <div class="urun">A3 zarf kağıt boyut 30x40 250'li paket</div>
-</div>
+<!-- Kargo yazısı -->
+<div class="delivery-text">Siparişleriniz de aynı gün teslimat</div>
 
-<button class="accordion">Klasörler</button>
-<div class="panel">
-  <div class="urun">A4 Klasör Geniş - Renkler mevcuttur</div>
-  <div class="urun">A4 Klasör Dar - Renkler mevcuttur</div>
-  <div class="urun">Klasör karton</div>
-  <div class="urun">Klasör geniş karton ipli</div>
-  <div class="urun">A5 Klasör 2 halkalı</div>
-  <div class="urun">A4 Klasör 4 halkalı</div>
-  <div class="urun">A4 sekreterlik dosya kapaksız - Renkler mevcuttur</div>
-  <div class="urun">A4 sekreterlik dosya kapaklı - Renkler mevcuttur</div>
-  <div class="urun">A4 Telli dosya - Renkler mevcuttur</div>
-  <div class="urun">A4 Yarım kapaklı dosya</div>
-  <div class="urun">A4 Tam kapaklı dosya</div>
-  <div class="urun">A4 poşet dosya</div>
-  <div class="urun">A4 Kalın poşet dosya</div>
-  <div class="urun">A5 poşet dosya</div>
-  <div class="urun">A4 Sunum dosyası 10-100 sayfa</div>
-</div>
+<!-- Kutular -->
+<div class="boxes-container">
 
-<button class="accordion">Zımba Makineleri</button>
-<div class="panel">
-  <div class="urun">Zımba makinasi 24/6 max 20 sayfa code:1186</div>
-  <div class="urun">Zımba makina 24/6 max 20 sayfa code: 1198</div>
-  <div class="urun">Zımba makinesi 24/6 max 15 sayfa code: 1182</div>
-  <div class="urun">Zımba makinesi 24/6 max 20 sayfa code: 787</div>
-  <div class="urun">Zımba makinesi 24/6 max 35 sayfa code: S-170</div>
-  <div class="urun">Zımba makinesi 24/6 max 30 sayfa code: 763</div>
-  <div class="urun">Zımba makinesi 24/6 max 10 sayfa code: 1196</div>
-  <div class="urun">Zımba makinesi 24/6 max 20 sayfa code: 4000</div>
-  <div class="urun">Zımba makinesi 24/6 max 20 sayfa code: 7000</div>
-  <div class="urun">Zımba makinesi 24/6 max 25 sayfa code: C-10</div>
-  <div class="urun">Zımba makinesi 24/6 max 30 sayfa code: A-100</div>
-  <div class="urun">Zımba makinesi 24/6 max 35 sayfa code: 105</div>
-  <div class="urun">Zımba makinesi 24/6 max 30 sayfa code: 103</div>
-  <div class="urun">Zımba makinesi 24/6 max 25 sayfa code: 785</div>
-  <div class="urun">Zımba makinesi Arşiv Tipi 23/10 max 50 sayfa code: 391</div>
-  <div class="urun">Zımba makinesi Arşiv Tipi 24/6,24/10,23/10,23/13, max50 sayfa code: HS-1000</div>
-  <div class="urun">Zımba makinesi Arşiv Tipi 23/6,23/13 max 100 yaprak code: LT326</div>
-  <div class="urun">Zımba makinesi Arşiv Tipi 23/6, 23/8, 23/17 max 150 sayfa code: 792</div>
-  <div class="urun">Zımba makinasi Arşiv Tipi 23/13, 23/6 max 100 sayfa code: HD-100</div>
-  <div class="urun">Zımba makinesi Arşiv Tipi 23/6, 23/13, 23/23 max 200 sayfa code: 794</div>
-  <div class="urun">Zımba makinesi Arşiv Tipi 23/6, 23/24 max 210 sayfa code: Lt327</div>
+  <div class="box">
+    <h3>A4, A3, A5 Kağıt ve Benzerleri</h3>
+    <div class="product-list">
+      <div class="urun">A3 kağıt 500'lü paket</div>
+      <div class="urun">A5 kağıt 500'lü paket</div>
+      <div class="urun">Nagivator A4 kağıt 160 gr 250'li paket</div>
+      <div class="urun">Kraft kağıt A4 100'lü paket</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Zarflar</h3>
+    <div class="product-list">
+      <div class="urun">Diplomat zarf boyut 105x240 500'lü paket</div>
+      <div class="urun">Kare zarf boyut 114x162 500'lü paket</div>
+      <div class="urun">CD zarf pencereli 1.000'li paket</div>
+      <div class="urun">A5 zarf kağıt boyut 17x25 250'li paket</div>
+      <div class="urun">A4 zarf kağıt boyut 24x32 250'li paket</div>
+      <div class="urun">A3 zarf kağıt boyut 30x40 250'li paket</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Klasörler</h3>
+    <div class="product-list">
+      <div class="urun">A4 Klasör Geniş - Renkler mevcuttur</div>
+      <div class="urun">A4 Klasör Dar - Renkler mevcuttur</div>
+      <div class="urun">Klasör karton</div>
+      <div class="urun">Klasör geniş karton ipli</div>
+      <div class="urun">A5 Klasör 2 halkalı</div>
+      <div class="urun">A4 Klasör 4 halkalı</div>
+      <div class="urun">A4 sekreterlik dosya kapaksız - Renkler mevcuttur</div>
+      <div class="urun">A4 sekreterlik dosya kapaklı - Renkler mevcuttur</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Zımba Makineleri</h3>
+    <div class="product-list">
+      <div class="urun">Zımba makinasi 24/6 max 20 sayfa code:1186</div>
+      <div class="urun">Zımba makina 24/6 max 20 sayfa code: 1198</div>
+      <div class="urun">Zımba makinesi 24/6 max 15 sayfa code: 1182</div>
+      <div class="urun">Zımba makinesi 24/6 max 20 sayfa code: 787</div>
+      <div class="urun">Zımba makinesi 24/6 max 35 sayfa code: S-170</div>
+      <div class="urun">Zımba makinesi 24/6 max 30 sayfa code: 763</div>
+      <div class="urun">Zımba makinesi 24/6 max 10 sayfa code: 1196</div>
+      <div class="urun">Zımba makinesi 24/6 max 20 sayfa code: 4000</div>
+    </div>
+  </div>
+
 </div>
 
 <footer>
@@ -177,29 +271,24 @@
 </footer>
 
 <script>
-  const accordions = document.querySelectorAll('.accordion');
-  const panels = document.querySelectorAll('.panel');
-  const toggleAllBtn = document.getElementById('toggleAll');
-
-  toggleAllBtn.addEventListener('click', () => {
-    const anyOpen = Array.from(panels).some(panel => panel.style.display === 'block');
-    if (anyOpen) {
-      panels.forEach(panel => panel.style.display = 'none');
-    } else {
-      panels.forEach(panel => panel.style.display = 'block');
-    }
-  });
-
-  accordions.forEach((acc) => {
-    acc.addEventListener('click', () => {
-      const panel = acc.nextElementSibling;
-      if (panel.style.display === 'block') {
-        panel.style.display = 'none';
-      } else {
-        panel.style.display = 'block';
-      }
+  // Tooltip açıp kapatma için ikonlara tıklayınca
+  document.querySelectorAll('.icon-wrapper').forEach(icon => {
+    icon.addEventListener('click', () => {
+      icon.classList.toggle('show-tooltip');
+      // Diğer tooltipler kapansın
+      document.querySelectorAll('.icon-wrapper').forEach(otherIcon => {
+        if (otherIcon !== icon) otherIcon.classList.remove('show-tooltip');
+      });
     });
   });
+
+  // Sayfa dışına tıklayınca tooltip kapanır
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.icon-wrapper')) {
+      document.querySelectorAll('.icon-wrapper').forEach(icon => icon.classList.remove('show-tooltip'));
+    }
+  });
 </script>
+
 </body>
 </html>
