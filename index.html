@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+[19:00, 11.06.2025] .: …
+[19:04, 11.06.2025] .: <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8" />
@@ -76,6 +78,17 @@
     background-color: #e1e8f0;
   }
 
+  /* Tüm ürünleri aç/kapa butonu */
+  #toggleAll {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #2c3e50;
+    cursor: pointer;
+    user-select: none;
+  }
+
   footer {
     margin-top: 40px;
     border-top: 1px solid #ccc;
@@ -94,10 +107,7 @@
 
 <h2>Özzirve Office Kırtasiye Ürünleri</h2>
 
-<div style="text-align:center; margin-bottom: 15px; font-size: 1.2em; font-weight: 600; color: #2c3e50;">
-  <span style="user-select:none;">&#8592; &#8593; &#8594; &#8595;</span><br>
-  Ürünler için Tıklayınız
-</div>
+<div id="toggleAll">▼ Ürünleri Göster / Gizle</div>
 
 <button class="accordion">A4, A3, A5 Kağıt ve Benzerleri</button>
 <div class="panel">
@@ -168,6 +178,18 @@
 
 <script>
   const accordions = document.querySelectorAll('.accordion');
+  const panels = document.querySelectorAll('.panel');
+  const toggleAllBtn = document.getElementById('toggleAll');
+
+  toggleAllBtn.addEventListener('click', () => {
+    const anyOpen = Array.from(panels).some(panel => panel.style.display === 'block');
+    if (anyOpen) {
+      panels.forEach(panel => panel.style.display = 'none');
+    } else {
+      panels.forEach(panel => panel.style.display = 'block');
+    }
+  });
+
   accordions.forEach((acc) => {
     acc.addEventListener('click', () => {
       const panel = acc.nextElementSibling;
