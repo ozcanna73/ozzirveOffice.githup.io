@@ -29,10 +29,39 @@
     max-width: 300px;
     width: 100%;
     height: auto;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 10px auto;
   }
 
-  /* Üst ikonlar ve mesaj */
+  /* Arama kutusu */
+  .search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto 30px auto;
+  }
+  .search-box {
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 12px 18px;
+    border: 2px solid #c0392b;
+    border-radius: 30px;
+    font-size: 1em;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    padding-left: 45px;
+  }
+  .search-box::before {
+    content: "🔍";
+    position: absolute;
+    top: 11px;
+    left: 16px;
+    font-size: 1.2em;
+    color: #c0392b;
+  }
+
   .top-icons {
     display: flex;
     align-items: center;
@@ -44,7 +73,7 @@
   .icon-wrapper {
     position: relative;
     cursor: pointer;
-    color: #c0392b; /* kırmızı şık renk */
+    color: #c0392b;
     font-size: 30px;
   }
   .icon-wrapper svg {
@@ -86,7 +115,6 @@
     user-select: none;
   }
 
-  /* 4 ürün kutusu yatay mobil ve pc */
   .boxes-container {
     display: flex;
     flex-wrap: wrap;
@@ -99,14 +127,13 @@
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     padding: 15px;
-    flex: 1 1 22%; /* yaklaşık 4 kutu yan yana genişliği */
+    flex: 1 1 22%;
     max-width: 280px;
     display: flex;
     flex-direction: column;
     user-select: none;
   }
 
-  /* Başlık */
   .box h3 {
     margin: 0 0 10px 0;
     color: #34495e;
@@ -115,7 +142,6 @@
     text-align: center;
   }
 
-  /* Ürün liste alanı - yatay kayan */
   .product-list {
     display: flex;
     overflow-x: auto;
@@ -135,7 +161,6 @@
     background-color: #f0f0f0;
   }
 
-  /* Ürün kartları */
   .urun {
     min-width: 160px;
     background-color: #ecf0f1;
@@ -153,7 +178,6 @@
     background-color: #d6dbdf;
   }
 
-  /* Mobilde kutuları alt alta yap */
   @media screen and (max-width: 768px) {
     .boxes-container {
       flex-direction: column;
@@ -185,19 +209,22 @@
 <h1>Özzirve Office'e Hoş Geldiniz</h1>
 <img src="özzirvekırtasiye(1)(1).png" alt="Özzirve Kırtasiye Logo" />
 
+<div class="search-container">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Ürün ara...">
+  </div>
+</div>
+
 <h2>Kırtasiye Ürünler</h2>
 
-<!-- Üst ikonlar -->
 <div class="top-icons">
   <div class="icon-wrapper" id="kargo-icon" title="Siparişleriniz de aynı gün teslimat">
-    <!-- Kargo arabası SVG -->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
       <path d="M6 48a6 6 0 1 0 12 0 6 6 0 0 0-12 0zm38 0a6 6 0 1 0 12 0 6 6 0 0 0-12 0zM20 12h26l8 16v12H18v-4l2-8z" />
     </svg>
     <div class="tooltip">Siparişleriniz de aynı gün teslimat</div>
   </div>
   <div class="icon-wrapper" id="ev-icon" title="26 Yıllık Deneyim">
-    <!-- Ev SVG -->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
       <path d="M32 12 L12 32 H20 V52 H28 V40 H36 V52 H44 V32 H52 Z" />
     </svg>
@@ -205,11 +232,9 @@
   </div>
 </div>
 
-<!-- Kargo yazısı -->
 <div class="delivery-text">Siparişleriniz de aynı gün teslimat</div>
 
-<!-- Kutular -->
-<div class="boxes-container">
+<div class="boxes-container" id="boxes">
 
   <div class="box">
     <h3>A4, A3, A5 Kağıt ve Benzerleri</h3>
@@ -269,22 +294,26 @@
 </footer>
 
 <script>
-  // Tooltip açıp kapatma için ikonlara tıklayınca
   document.querySelectorAll('.icon-wrapper').forEach(icon => {
     icon.addEventListener('click', () => {
       icon.classList.toggle('show-tooltip');
-      // Diğer tooltipler kapansın
-      document.querySelectorAll('.icon-wrapper').forEach(otherIcon => {
-        if (otherIcon !== icon) otherIcon.classList.remove('show-tooltip');
+      document.querySelectorAll('.icon-wrapper').forEach(other => {
+        if (other !== icon) other.classList.remove('show-tooltip');
       });
     });
   });
-
-  // Sayfa dışına tıklayınca tooltip kapanır
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.icon-wrapper')) {
       document.querySelectorAll('.icon-wrapper').forEach(icon => icon.classList.remove('show-tooltip'));
     }
+  });
+
+  // Arama filtresi
+  document.getElementById('searchInput').addEventListener('input', function () {
+    const filter = this.value.toLowerCase();
+    document.querySelectorAll('.urun').forEach(el => {
+      el.style.display = el.textContent.toLowerCase().includes(filter) ? 'block' : 'none';
+    });
   });
 </script>
 
