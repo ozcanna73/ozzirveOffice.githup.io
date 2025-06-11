@@ -32,18 +32,6 @@
     height: auto;
   }
 
-  /* Kampanya banner */
-  .campaign-banner {
-    background-color: #c0392b;
-    color: white;
-    text-align: center;
-    padding: 12px 20px;
-    font-weight: bold;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    font-size: 1.1em;
-  }
-
   /* Arama kutusu */
   .search-container {
     display: flex;
@@ -146,8 +134,6 @@
     padding: 15px;
     flex: 1 1 280px;
     max-width: 280px;
-    display: flex;
-    flex-direction: column;
   }
 
   .box h3 {
@@ -191,45 +177,11 @@
     white-space: normal;
     flex-shrink: 0;
     cursor: default;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    transition: background-color 0.3s;
   }
 
-  /* Hover efekti */
   .urun:hover {
     background-color: #d6dbdf;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  }
-
-  /* Ürün açıklaması */
-  .urun-aciklama {
-    font-size: 0.85em;
-    color: #7f8c8d;
-    margin-top: 5px;
-    min-height: 30px;
-  }
-
-  /* Sipariş butonu */
-  .order-btn {
-    margin-top: 8px;
-    padding: 6px 10px;
-    background-color: #c0392b;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.9em;
-    text-align: center;
-    transition: background-color 0.3s;
-    text-decoration: none;
-    display: inline-block;
-    user-select: none;
-  }
-
-  .order-btn:hover {
-    background-color: #e74c3c;
   }
 
   footer {
@@ -260,10 +212,6 @@
   <h1>Özzirve Office'e Hoş Geldiniz</h1>
   <img src="özzirvekırtasiye(1)(1).png" alt="Özzirve Kırtasiye Logo" />
 
-  <div class="campaign-banner">
-    🎉 Kampanya! Tüm A4, A5 kağıtlarda %10 indirim fırsatı! 🎉
-  </div>
-
   <div class="search-container">
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="Ürün ara...">
@@ -290,33 +238,92 @@
     <div class="box">
       <h3>A4, A3, A5 Kağıt ve Benzerleri</h3>
       <div class="product-list">
-        <div class="urun">
-          A3 kağıt 500'lü paket
-          <div class="urun-aciklama">Yüksek kaliteli, parlak yüzeyli kağıt.</div>
-          <a href="https://wa.me/905555555555?text=Merhaba,%20A3%20kağıt%20500'lü%20paket%20sipariş%20vermek%20istiyorum." target="_blank" class="order-btn" aria-label="A3 kağıt sipariş ver">Sipariş Ver</a>
-        </div>
-        <div class="urun">
-          A5 kağıt 500'lü paket
-          <div class="urun-aciklama">Ekonomik ve dayanıklı A5 kağıt.</div>
-          <a href="https://wa.me/905555555555?text=Merhaba,%20A5%20kağıt%20500'lü%20paket%20sipariş%20vermek%20istiyorum." target="_blank" class="order-btn" aria-label="A5 kağıt sipariş ver">Sipariş Ver</a>
-        </div>
-        <div class="urun">
-          Nagivator A4 kağıt 160 gr 250'li paket
-          <div class="urun-aciklama">Profesyonel baskılar için ideal kağıt.</div>
-          <a href="https://wa.me/905555555555?text=Merhaba,%20Nagivator%20A4%20kağıt%20160%20gr%20250'li%20paket%20sipariş%20vermek%20istiyorum." target="_blank" class="order-btn" aria-label="Navigator A4 kağıt sipariş ver">Sipariş Ver</a>
-        </div>
-        <div class="urun">
-          Kraft kağıt A4 100'lü paket
-          <div class="urun-aciklama">Doğal kahverengi renk, çevre dostu kağıt.</div>
-          <a href="https://wa.me/905555555555?text=Merhaba,%20Kraft%20kağıt%20A4%20100'lü%20paket%20sipariş%20vermek%20istiyorum." target="_blank" class="order-btn" aria-label="Kraft kağıt sipariş ver">Sipariş Ver</a>
-        </div>
+        <div class="urun">A3 kağıt 500'lü paket</div>
+        <div class="urun">A5 kağıt 500'lü paket</div>
+        <div class="urun">Nagivator A4 kağıt 160 gr 250'li paket</div>
+        <div class="urun">Kraft kağıt A4 100'lü paket</div>
       </div>
     </div>
 
     <div class="box">
       <h3>Zarflar</h3>
       <div class="product-list">
-        <div class="urun">
-          Diplomat zarf 105x240 500'lü
-          <div class="urun-aciklama">Kaliteli diplomat zarflar.</div>
-          <a href="https://wa.me/905555555555?text
+        <div class="urun">Diplomat zarf 105x240 500'lü</div>
+        <div class="urun">Kare zarf 114x162 500'lü</div>
+        <div class="urun">CD zarf pencereli 1000'li</div>
+        <div class="urun">A5 zarf 17x25 250'li</div>
+        <div class="urun">A4 zarf 24x32 250'li</div>
+        <div class="urun">A3 zarf 30x40 250'li</div>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>Klasörler</h3>
+      <div class="product-list">
+        <div class="urun">A4 Geniş Klasör (Renkli)</div>
+        <div class="urun">A4 Dar Klasör (Renkli)</div>
+        <div class="urun">Karton klasör</div>
+        <div class="urun">Geniş karton dosya</div>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>Ofis Malzemeleri</h3>
+      <div class="product-list">
+        <div class="urun">Zımba</div>
+        <div class="urun">Delgeç</div>
+        <div class="urun">Masaüstü kalemlik</div>
+        <div class="urun">Masa takvimi</div>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>Kalemler</h3>
+      <div class="product-list">
+        <div class="urun">Tükenmez kalem</div>
+        <div class="urun">Pilot kalem</div>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>Aksesuarlar</h3>
+      <div class="product-list">
+        <div class="urun">Masa ayracı</div>
+        <div class="urun">3'lü plastik evrak rafı</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2025 Özzirve Kırtasiye - Tüm Hakları Saklıdır
+  </footer>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const boxes = document.getElementById('boxes');
+
+  searchInput.addEventListener('input', function () {
+    const searchTerm = this.value.toLowerCase();
+
+    const boxesChildren = boxes.querySelectorAll('.box');
+    boxesChildren.forEach(box => {
+      let hasMatchInBox = false;
+      const products = box.querySelectorAll('.urun');
+      products.forEach(product => {
+        const text = product.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+          product.style.display = '';
+          hasMatchInBox = true;
+        } else {
+          product.style.display = 'none';
+        }
+      });
+      // Kutuyu göster/gizle arama sonucu yoksa
+      box.style.display = hasMatchInBox ? '' : 'none';
+    });
+  });
+</script>
+
+</body>
+</html>
