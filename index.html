@@ -1,203 +1,211 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Özzirve Kırtasiye Ürünleri</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f4f4;
-      color: #333;
-      padding: 20px;
-      margin: 0;
-    }
-    h1, h2 {
-      text-align: center;
-      color: #2c3e50;
-      margin-bottom: 10px;
-    }
-    h2 {
-      margin-bottom: 20px;
-      font-weight: normal;
-    }
-    img {
-      display: block;
-      margin: 0 auto 20px auto;
-      max-width: 300px;
-      width: 100%;
-      height: auto;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Özzirve Kırtasiye Ürünleri</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    padding: 20px;
+    margin: 0;
+  }
+  h1, h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+  h2 {
+    margin-bottom: 20px;
+    font-weight: normal;
+  }
+  img {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+  }
 
-    .search-container {
-      display: flex;
-      justify-content: center;
-      margin: 20px auto;
-    }
+  /* Arama kutusu */
+  .search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+  }
 
-    .search-box {
-      width: 90%;
-      max-width: 500px;
-      position: relative;
-    }
+  .search-box {
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+  }
 
-    .search-box input {
-      width: 100%;
-      padding: 12px 18px;
-      border: 2px solid #c0392b;
-      border-radius: 30px;
-      font-size: 1em;
-      outline: none;
-      padding-left: 45px;
-    }
+  .search-box input {
+    width: 100%;
+    padding: 12px 18px 12px 45px;
+    border: 2px solid #c0392b;
+    border-radius: 30px;
+    font-size: 1em;
+    outline: none;
+  }
 
-    .search-box::before {
-      content: "🔍";
-      position: absolute;
-      top: 11px;
-      left: 16px;
-      font-size: 1.2em;
-      color: #c0392b;
-    }
+  .search-box::before {
+    content: "🔍";
+    position: absolute;
+    top: 11px;
+    left: 16px;
+    font-size: 1.2em;
+    color: #c0392b;
+    user-select: none;
+  }
 
-    .top-icons {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin: 15px 0;
-    }
+  /* Üst ikonlar */
+  .top-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 15px 0;
+  }
 
-    .icon-wrapper {
-      position: relative;
-      color: #c0392b;
-      font-size: 30px;
-      cursor: pointer;
-    }
+  .icon-wrapper {
+    position: relative;
+    color: #c0392b;
+    font-size: 30px;
+    cursor: default;
+    user-select: none;
+  }
 
-    .icon-wrapper svg {
-      width: 36px;
-      height: 36px;
-      fill: #c0392b;
-      transition: fill 0.3s;
-    }
+  .icon-wrapper svg {
+    width: 36px;
+    height: 36px;
+    fill: #c0392b;
+    transition: fill 0.3s;
+  }
 
-    .icon-wrapper:hover svg {
-      fill: #e74c3c;
-    }
+  .icon-wrapper:hover svg {
+    fill: #e74c3c;
+  }
 
-    .tooltip {
-      position: absolute;
-      top: 45px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #c0392b;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 0.85em;
-      white-space: nowrap;
-      display: none;
-    }
+  .tooltip {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #c0392b;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    white-space: nowrap;
+    display: none;
+    pointer-events: none;
+    z-index: 10;
+  }
 
-    .icon-wrapper.show-tooltip .tooltip {
-      display: block;
-    }
+  .icon-wrapper:hover .tooltip {
+    display: block;
+  }
 
-    .delivery-text {
-      text-align: center;
-      color: #c0392b;
-      font-weight: bold;
-      font-size: 1.1em;
-      margin: 15px 0;
-    }
+  .delivery-text {
+    text-align: center;
+    color: #c0392b;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 15px 0;
+  }
 
+  /* Ürün kutuları */
+  .boxes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .box {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 15px;
+    flex: 1 1 280px;
+    max-width: 280px;
+  }
+
+  .box h3 {
+    text-align: center;
+    color: #34495e;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+
+  .product-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: #c0392b #f0f0f0;
+  }
+
+  .product-list::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .product-list::-webkit-scrollbar-thumb {
+    background-color: #c0392b;
+    border-radius: 8px;
+  }
+
+  .product-list::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
+
+  .urun {
+    min-width: 160px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    font-size: 0.95em;
+    color: #2c3e50;
+    font-weight: 500;
+    white-space: normal;
+    flex-shrink: 0;
+    cursor: default;
+    transition: background-color 0.3s;
+  }
+
+  .urun:hover {
+    background-color: #d6dbdf;
+  }
+
+  footer {
+    margin-top: 40px;
+    padding: 15px 0;
+    border-top: 1px solid #ccc;
+    font-size: 0.9em;
+    text-align: center;
+    color: #555;
+  }
+
+  @media screen and (max-width: 768px) {
     .boxes-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      flex-direction: column;
+      align-items: center;
     }
-
     .box {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 15px;
-      flex: 1 1 280px;
-      max-width: 280px;
+      max-width: 95%;
     }
-
-    .box h3 {
-      text-align: center;
-      color: #34495e;
-      margin-bottom: 10px;
-      font-size: 1.1em;
-    }
-
     .product-list {
-      display: flex;
-      overflow-x: auto;
-      gap: 10px;
-      padding-bottom: 8px;
-      scrollbar-width: thin;
-      scrollbar-color: #c0392b #f0f0f0;
+      justify-content: flex-start;
     }
-
-    .product-list::-webkit-scrollbar {
-      height: 8px;
-    }
-
-    .product-list::-webkit-scrollbar-thumb {
-      background-color: #c0392b;
-      border-radius: 8px;
-    }
-
-    .product-list::-webkit-scrollbar-track {
-      background-color: #f0f0f0;
-    }
-
-    .urun {
-      min-width: 160px;
-      background-color: #ecf0f1;
-      border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      font-size: 0.95em;
-      color: #2c3e50;
-      font-weight: 500;
-      white-space: normal;
-      flex-shrink: 0;
-    }
-
-    .urun:hover {
-      background-color: #d6dbdf;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding: 15px 0;
-      border-top: 1px solid #ccc;
-      font-size: 0.9em;
-      text-align: center;
-      color: #555;
-    }
-
-    @media screen and (max-width: 768px) {
-      .boxes-container {
-        flex-direction: column;
-        align-items: center;
-      }
-      .box {
-        max-width: 95%;
-      }
-      .product-list {
-        justify-content: flex-start;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
@@ -213,12 +221,12 @@
   <h2>Kırtasiye Ürünler</h2>
 
   <div class="top-icons">
-    <div class="icon-wrapper" title="Siparişleriniz de aynı gün teslimat">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M6 48a6 6 0 1 0 12 0 6 6 0 0 0-12 0zm38 0a6 6 0 1 0 12 0 6 6 0 0 0-12 0zM20 12h26l8 16v12H18v-4l2-8z" /></svg>
+    <div class="icon-wrapper" tabindex="0" aria-label="Siparişleriniz de aynı gün teslimat">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M6 48a6 6 0 1 0 12 0 6 6 0 0 0-12 0zm38 0a6 6 0 1 0 12 0 6 6 0 0 0-12 0zM20 12h26l8 16v12H18v-4l2-8z"/></svg>
       <div class="tooltip">Siparişleriniz de aynı gün teslimat</div>
     </div>
-    <div class="icon-wrapper" title="26 Yıllık Deneyim">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32 12 L12 32 H20 V52 H28 V40 H36 V52 H44 V32 H52 Z" /></svg>
+    <div class="icon-wrapper" tabindex="0" aria-label="26 Yıllık Deneyim">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 12 L12 32 H20 V52 H28 V40 H36 V52 H44 V32 H52 Z"/></svg>
       <div class="tooltip">26 Yıllık Deneyim</div>
     </div>
   </div>
@@ -255,161 +263,67 @@
         <div class="urun">A4 Geniş Klasör (Renkli)</div>
         <div class="urun">A4 Dar Klasör (Renkli)</div>
         <div class="urun">Karton klasör</div>
-        <div class="urun">Geniş karton ipli klasör</div>
-        <div class="urun">A5 2 halkalı klasör</div>
-        <div class="urun">A4 4 halkalı klasör</div>
-        <div class="urun">A4 sekreterlik dosya (kapaksız)</div>
-        <div class="urun">A4 sekreterlik dosya (kapaklı)</div>
+        <div class="urun">Geniş karton dosya</div>
       </div>
     </div>
 
     <div class="box">
-      <h3>Zımba Makineleri</h3>
+      <h3>Ofis Malzemeleri</h3>
       <div class="product-list">
-        <div class="urun">Zımba 24/6 max 20 sf code:1186</div>
-        <div class="urun">Zımba 24/6 max 20 sf code:1198</div>
-        <div class="urun">Zımba 24/6 max 15 sf code:1182</div>
-        <div class="urun">Zımba 24/6 max 20 sf code:787</div>
-        <div class="urun">Zımba 24/6 max 35 sf code:S-170</div>
-        <div class="urun">Zımba 24/6 max 30 sf code:763</div>
-        <div class="urun">Zımba 24/6 max 10 sf code:1196</div>
-        <div class="urun">Zımba 24/6 max 20 sf code:4000</div>
+        <div class="urun">Zımba</div>
+        <div class="urun">Delgeç</div>
+        <div class="urun">Masaüstü kalemlik</div>
+        <div class="urun">Masa takvimi</div>
       </div>
     </div>
-<div class="box">
-  <h3>Masaüstü Kalemlikler</h3>
-  <div class="product-list">
-    <!-- Ürünleri buraya ekleyebilirsiniz -->
-    <!-- Örnek: <div class="urun">Metal kalemlik - Siyah</div> -->
-  </div>
-</div>
-  </div>
-<div class="box">
-  <h3>Delgeçler</h3>
-  <div class="product-list">
-    <!-- Ürünleri buraya ekleyebilirsiniz -->
-    <div class="urun">Metal Delgeç - Siyah</div>
-    <div class="urun">Plastik Delgeç - Mavi</div>
-    <div class="urun">Mini Delgeç - Kırmızı</div>
-  </div>
-</div>
-<div class="box">
-  <h3>Tükenmez, Pilot ve Fosforlu Kalemler</h3>
-  <div class="product-list">
-    <div class="urun">Tükenmez Kalem - Siyah</div>
-    <div class="urun">Pilot Kalem - Mavi</div>
-    <div class="urun">Fosforlu Kalem - Sarı</div>
-  </div>
-</div>
 
-<div class="box">
-  <h3>Laminasyon Filmleri</h3>
-  <div class="product-list">
-    <div class="urun">A4 Laminasyon Filmi 100'lü</div>
-    <div class="urun">A3 Laminasyon Filmi 125 mikron</div>
-  </div>
-</div>
+    <div class="box">
+      <h3>Kalemler</h3>
+      <div class="product-list">
+        <div class="urun">Tükenmez kalem</div>
+        <div class="urun">Pilot kalem</div>
+      </div>
+    </div>
 
-<div class="box">
-  <h3>Evrak Rafları</h3>
-  <div class="product-list">
-    <div class="urun">3 Katlı Plastik Evrak Rafı</div>
-    <div class="urun">Metal Evrak Rafı</div>
-  </div>
-</div>
+    <div class="box">
+      <h3>Aksesuarlar</h3>
+      <div class="product-list">
+        <div class="urun">Masa ayracı</div>
+        <div class="urun">3'lü plastik evrak rafı</div>
+      </div>
+    </div>
 
-<div class="box">
-  <h3>Metal Çöp ve Kağıt İmha Makineleri</h3>
-  <div class="product-list">
-    <div class="urun">Metal Ofis Çöp Kovası</div>
-    <div class="urun">Kağıt İmha Makinesi 10 Sayfa</div>
   </div>
-</div>
 
-<div class="box">
-  <h3>Not Kağıtları, Ajandalar ve Defterler</h3>
-  <div class="product-list">
-    <div class="urun">Yapışkanlı Not Kağıdı</div>
-    <div class="urun">Spiralli Ajanda</div>
-    <div class="urun">Çizgili Defter A5</div>
-  </div>
-</div>
-
-<div class="box">
-  <h3>Zımba Telleri ve Raptiye Çeşitleri</h3>
-  <div class="product-list">
-    <div class="urun">Zımba Teli No:10</div>
-    <div class="urun">Renkli Raptiyeler 100'lü</div>
-  </div>
-</div>
-
-<div class="box">
-  <h3>Bez Bayraklar</h3>
-  <div class="product-list">
-    <div class="urun">Türk Bayrağı - Masa Tipi</div>
-    <div class="urun">Logolu Bez Bayrak</div>
-  </div>
-</div>
-
-<div class="box">
-  <h3>Yazı Tahtaları ve Mantar Panolar</h3>
-  <div class="product-list">
-    <div class="urun">Beyaz Yazı Tahtası 60x90 cm</div>
-    <div class="urun">Mantar Pano 50x70 cm</div>
-  </div>
-</div>
-
-<div class="box">
-  <h3>Lüks Hediyelik Kalemler</h3>
-  <div class="product-list">
-    <div class="urun">Ahşap Kutulu Lüks Kalem</div>
-    <div class="urun">İsme Özel Metal Kalem</div>
-  </div>
-</div>
-
-<div class="box">
-  <h3>Evrak Kayıt Defterleri</h3>
-  <div class="product-list">
-    <div class="urun">Gelen Evrak Kayıt Defteri</div>
-    <div class="urun">Giden Evrak Kayıt Defteri</div>
-  </div>
-</div>
-
-<div class="box">
-  <h3>Toner ve Kartuşlar</h3>
-  <div class="product-list">
-    <div class="urun">HP 85A Muadil Toner</div>
-    <div class="urun">Canon Yazıcı Kartuşu 512</div>
-  </div>
-</div>
   <footer>
-    <div>İletişim: 0552 482 0136 | ozzirve_2161482@hotmail.com</div>
-    <div>Şırnak Merkez / Atatürk Mahallesi</div>
+    &copy; 2025 Özzirve Kırtasiye - Tüm Hakları Saklıdır
   </footer>
 
-  <script>
-    document.querySelectorAll('.icon-wrapper').forEach(icon => {
-      icon.addEventListener('click', () => {
-        icon.classList.toggle('show-tooltip');
-        document.querySelectorAll('.icon-wrapper').forEach(other => {
-          if (other !== icon) other.classList.remove('show-tooltip');
-        });
-      });
-    });
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.icon-wrapper')) {
-        document.querySelectorAll('.icon-wrapper').forEach(icon => icon.classList.remove('show-tooltip'));
-      }
-    });
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const boxes = document.getElementById('boxes');
 
-    // Arama filtresi
-    document.getElementById('searchInput').addEventListener('input', function () {
-      const filter = this.value.toLowerCase();
-      document.querySelectorAll('.urun').forEach(el => {
-        el.style.display = el.textContent.toLowerCase().includes(filter) ? 'block' : 'none';
+  searchInput.addEventListener('input', function () {
+    const searchTerm = this.value.toLowerCase();
+
+    const boxesChildren = boxes.querySelectorAll('.box');
+    boxesChildren.forEach(box => {
+      let hasMatchInBox = false;
+      const products = box.querySelectorAll('.urun');
+      products.forEach(product => {
+        const text = product.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+          product.style.display = '';
+          hasMatchInBox = true;
+        } else {
+          product.style.display = 'none';
+        }
       });
+      // Kutuyu göster/gizle arama sonucu yoksa
+      box.style.display = hasMatchInBox ? '' : 'none';
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
