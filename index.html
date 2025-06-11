@@ -178,10 +178,144 @@
     flex-shrink: 0;
     cursor: default;
     transition: background-color 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .urun:hover {
     background-color: #d6dbdf;
+  }
+
+  /* Sipariş buton ve miktar kontrolleri */
+  .order-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  .order-controls button {
+    background-color: #c0392b;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s;
+  }
+  .order-controls button:hover {
+    background-color: #e74c3c;
+  }
+  .order-controls span {
+    min-width: 22px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  .order-controls .add-to-order {
+    padding: 5px 12px;
+    border-radius: 20px;
+    background-color: #27ae60;
+    font-size: 0.9em;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s;
+  }
+  .order-controls .add-to-order:hover {
+    background-color: #2ecc71;
+  }
+
+  /* Sipariş Kutusu */
+  #order-box {
+    background-color: #f5f0e6; /* Krem ton */
+    border: 2px solid #d9cbbd;
+    border-radius: 12px;
+    padding: 15px 20px;
+    max-width: 700px;
+    margin: 30px auto 20px auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  #order-box h2 {
+    color: #8b6e4e;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  #order-list {
+    max-height: 220px;
+    overflow-y: auto;
+    background-color: #fff8e1;
+    border: 1px solid #e0d4b9;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  #order-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  #order-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #d9cbbd;
+    padding: 6px 8px;
+    font-weight: 600;
+    font-size: 1em;
+    color: #6b5840;
+  }
+  #order-list li:last-child {
+    border-bottom: none;
+  }
+  #order-list li button {
+    background: transparent;
+    border: none;
+    color: #c0392b;
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s;
+  }
+  #order-list li button:hover {
+    color: #e74c3c;
+  }
+
+  /* Açıklama kısmı */
+  #order-comment {
+    margin-top: 15px;
+    width: 100%;
+    min-height: 80px;
+    border-radius: 10px;
+    border: 2px solid #d9cbbd;
+    padding: 8px 12px;
+    font-size: 1em;
+    resize: vertical;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #6b5840;
+  }
+
+  /* Sipariş gönderme butonu */
+  #send-order-btn {
+    margin-top: 15px;
+    background-color: #27ae60;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.15em;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 25px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s;
+  }
+  #send-order-btn:hover {
+    background-color: #2ecc71;
   }
 
   footer {
@@ -226,104 +360,4 @@
       <div class="tooltip">Siparişleriniz de aynı gün teslimat</div>
     </div>
     <div class="icon-wrapper" tabindex="0" aria-label="26 Yıllık Deneyim">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 12 L12 32 H20 V52 H28 V40 H36 V52 H44 V32 H52 Z"/></svg>
-      <div class="tooltip">26 Yıllık Deneyim</div>
-    </div>
-  </div>
-
-  <div class="delivery-text">Siparişleriniz de aynı gün teslimat</div>
-
-  <div class="boxes-container" id="boxes">
-
-    <div class="box">
-      <h3>A4, A3, A5 Kağıt ve Benzerleri</h3>
-      <div class="product-list">
-        <div class="urun">A3 kağıt 500'lü paket</div>
-        <div class="urun">A5 kağıt 500'lü paket</div>
-        <div class="urun">Nagivator A4 kağıt 160 gr 250'li paket</div>
-        <div class="urun">Kraft kağıt A4 100'lü paket</div>
-      </div>
-    </div>
-
-    <div class="box">
-      <h3>Zarflar</h3>
-      <div class="product-list">
-        <div class="urun">Diplomat zarf 105x240 500'lü</div>
-        <div class="urun">Kare zarf 114x162 500'lü</div>
-        <div class="urun">CD zarf pencereli 1000'li</div>
-        <div class="urun">A5 zarf 17x25 250'li</div>
-        <div class="urun">A4 zarf 24x32 250'li</div>
-        <div class="urun">A3 zarf 30x40 250'li</div>
-      </div>
-    </div>
-
-    <div class="box">
-      <h3>Klasörler</h3>
-      <div class="product-list">
-        <div class="urun">A4 Geniş Klasör (Renkli)</div>
-        <div class="urun">A4 Dar Klasör (Renkli)</div>
-        <div class="urun">Karton klasör</div>
-        <div class="urun">Geniş karton dosya</div>
-      </div>
-    </div>
-
-    <div class="box">
-      <h3>Ofis Malzemeleri</h3>
-      <div class="product-list">
-        <div class="urun">Zımba</div>
-        <div class="urun">Delgeç</div>
-        <div class="urun">Masaüstü kalemlik</div>
-        <div class="urun">Masa takvimi</div>
-      </div>
-    </div>
-
-    <div class="box">
-      <h3>Kalemler</h3>
-      <div class="product-list">
-        <div class="urun">Tükenmez kalem</div>
-        <div class="urun">Pilot kalem</div>
-      </div>
-    </div>
-
-    <div class="box">
-      <h3>Aksesuarlar</h3>
-      <div class="product-list">
-        <div class="urun">Masa ayracı</div>
-        <div class="urun">3'lü plastik evrak rafı</div>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    &copy; 2025 Özzirve Kırtasiye - Tüm Hakları Saklıdır
-  </footer>
-
-<script>
-  const searchInput = document.getElementById('searchInput');
-  const boxes = document.getElementById('boxes');
-
-  searchInput.addEventListener('input', function () {
-    const searchTerm = this.value.toLowerCase();
-
-    const boxesChildren = boxes.querySelectorAll('.box');
-    boxesChildren.forEach(box => {
-      let hasMatchInBox = false;
-      const products = box.querySelectorAll('.urun');
-      products.forEach(product => {
-        const text = product.textContent.toLowerCase();
-        if (text.includes(searchTerm)) {
-          product.style.display = '';
-          hasMatchInBox = true;
-        } else {
-          product.style.display = 'none';
-        }
-      });
-      // Kutuyu göster/gizle arama sonucu yoksa
-      box.style.display = hasMatchInBox ? '' : 'none';
-    });
-  });
-</script>
-
-</body>
-</html>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M32
