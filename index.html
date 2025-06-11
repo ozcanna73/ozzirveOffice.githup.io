@@ -79,40 +79,138 @@
   </style>
 </head>
 <body>
-  <h1>Hoş Geldiniz!</h1>
-  <p>Ofis ve Kırtasiye Ürünlerinde Kaliteli Hizmet</p>
-  <img src="özzirvekırtasiye(1)(1).png" alt="Kırtasiye Fotoğrafı" width="300">
-  <div class="urunler">
-    <div class="urun"><h3>A4 Kağıt</h3><p>500'lü paket</p></div>
-    <div class="urun"><h3>Tükenmez Kalem</h3><p>Mavi, kırmızı, siyah</p></div>
-    <div class="urun"><h3>Masa Takvimi</h3><p>2025 yılı, kurumsal</p></div>
-    <div class="urun"><h3>A3 Kağıt</h3><p>500'lü paket</p></div>
-    <div class="urun"><h3>A5 Kağıt</h3><p>500'lü paket</p></div>
-    <div class="urun"><h3>Navigator A4 Kağıt</h3><p>160 gr, 250'li paket</p></div>
-    <div class="urun"><h3>Kraft Kağıt A4</h3><p>100'lü paket</p></div>
-    <div class="urun"><h3>Diplomat Zarf</h3><p>105x240 mm, 500'lü paket</p></div>
-    <div class="urun"><h3>Kare Zarf</h3><p>114x162 mm, 500'lü paket</p></div>
-    <div class="urun"><h3>CD Zarf</h3><p>Pencereli, 1000'li paket</p></div>
-    <div class="urun"><h3>A5 Zarf</h3><p>17x25 cm, 250'li paket</p></div>
-    <div class="urun"><h3>A4 Zarf</h3><p>24x32 cm, 250'li paket</p></div>
-    <div class="urun"><h3>A3 Zarf</h3><p>30x40 cm, 250'li paket</p></div>
-    <div class="urun"><h3>A4 Klasör Geniş</h3><p>Renkler mevcuttur</p></div>
-    <div class="urun"><h3>A4 Klasör Dar</h3><p>Renkler mevcuttur</p></div>
-    <div class="urun"><h3>Klasör Karton</h3></div>
-    <div class="urun"><h3>Klasör Geniş Karton İpli</h3></div>
-    <div class="urun"><h3>A5 Klasör</h3><p>2 halkalı</p></div>
-    <div class="urun"><h3>A4 Klasör</h3><p>4 halkalı</p></div>
-    <div class="urun"><h3>A4 Sekreterlik Dosya</h3><p>Kapaksız, renkler mevcuttur</p></div>
-    <div class="urun"><h3>A4 Sekreterlik Dosya</h3><p>Kapaklı, renkler mevcuttur</p></div>
-    <div class="urun"><h3>A4 Telli Dosya</h3><p>Renkler mevcuttur</p></div>
-    <div class="urun"><h3>A4 Yarım Kapaklı Dosya</h3></div>
-    <div class="urun"><h3>A4 Tam Kapaklı Dosya</h3></div>
-    <div class="urun"><h3>A4 Poşet Dosya</h3></div>
-    <div class="urun"><h3>A4 Kalın Poşet Dosya</h3></div>
-    <div class="urun"><h3>A5 Poşet Dosya</h3></div>
-    <div class="urun"><h3>A4 Sunum Dosyası</h3><p>10-100 sayfa</p></div>
-    <div class="urun"><h3>Zımba Makineleri</h3><p>Farklı modeller ve kapasitede: 1186, 1198, 1182, 787, S-170, 763, 1196, 4000, 7000, C-10, A-100, 105, 103, 785, 391, HS-1000, LT326, 792, HD-100, 794, Lt327</p></div>
-  </div>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Özzirve Office Kırtasiye</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    color: #333;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+  h1 {
+    text-align: center;
+    color: #2c3e50;
+  }
+  .accordion {
+    background-color: #eee;
+    cursor: pointer;
+    padding: 15px 20px;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-weight: bold;
+    font-size: 1.2em;
+    user-select: none;
+  }
+  .accordion:hover {
+    background-color: #ddd;
+  }
+  .panel {
+    padding: 0 20px 15px 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    display: none;
+  }
+  .urun {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .urun:last-child {
+    border-bottom: none;
+  }
+</style>
+</head>
+<body>
+
+<h1>Özzirve Office Kırtasiye Ürünleri</h1>
+
+<button class="accordion">A4, A3, A5 Kağıt ve Benzerleri</button>
+<div class="panel">
+  <div class="urun">A3 kağıt 500'lü paket</div>
+  <div class="urun">A5 kağıt 500'lü paket</div>
+  <div class="urun">Nagivator A4 kağıt 160 gr 250'li paket</div>
+  <div class="urun">Kraft kağıt A4 100'lü paket</div>
+</div>
+
+<button class="accordion">Zarflar</button>
+<div class="panel">
+  <div class="urun">Diplomat zarf boyut 105x240 500'lü paket</div>
+  <div class="urun">Kare zarf boyut 114x162 500'lü paket</div>
+  <div class="urun">CD zarf pencereli 1.000'li paket</div>
+  <div class="urun">A5 zarf kağıt boyut 17x25 250'li paket</div>
+  <div class="urun">A4 zarf kağıt boyut 24x32 250'li paket</div>
+  <div class="urun">A3 zarf kağıt boyut 30x40 250'li paket</div>
+</div>
+
+<button class="accordion">Klasörler</button>
+<div class="panel">
+  <div class="urun">A4 Klasör Geniş - Renkler mevcuttur</div>
+  <div class="urun">A4 Klasör Dar - Renkler mevcuttur</div>
+  <div class="urun">Klasör karton</div>
+  <div class="urun">Klasör geniş karton ipli</div>
+  <div class="urun">A5 Klasör 2 halkalı</div>
+  <div class="urun">A4 Klasör 4 halkalı</div>
+  <div class="urun">A4 sekreterlik dosya kapaksız - Renkler mevcuttur</div>
+  <div class="urun">A4 sekreterlik dosya kapaklı - Renkler mevcuttur</div>
+  <div class="urun">A4 Telli dosya - Renkler mevcuttur</div>
+  <div class="urun">A4 Yarım kapaklı dosya</div>
+  <div class="urun">A4 Tam kapaklı dosya</div>
+  <div class="urun">A4 poşet dosya</div>
+  <div class="urun">A4 Kalın poşet dosya</div>
+  <div class="urun">A5 poşet dosya</div>
+  <div class="urun">A4 Sunum dosyası 10-100 sayfa</div>
+</div>
+
+<button class="accordion">Zımba Makineleri</button>
+<div class="panel">
+  <div class="urun">Zımba makinasi 24/6 max 20 sayfa code:1186</div>
+  <div class="urun">Zımba makina 24/6 max 20 sayfa code: 1198</div>
+  <div class="urun">Zımba makinesi 24/6 max 15 sayfa code: 1182</div>
+  <div class="urun">Zımba makinesi 24/6 max 20 sayfa code: 787</div>
+  <div class="urun">Zımba makinesi 24/6 max 35 sayfa code: S-170</div>
+  <div class="urun">Zımba makinesi 24/6 max 30 sayfa code: 763</div>
+  <div class="urun">Zımba makinesi 24/6 max 10 sayfa code: 1196</div>
+  <div class="urun">Zımba makinesi 24/6 max 20 sayfa code: 4000</div>
+  <div class="urun">Zımba makinesi 24/6 max 20 sayfa code: 7000</div>
+  <div class="urun">Zımba makinesi 24/6 max 25 sayfa code: C-10</div>
+  <div class="urun">Zımba makinesi 24/6 max 30 sayfa code: A-100</div>
+  <div class="urun">Zımba makinesi 24/6 max 35 sayfa code: 105</div>
+  <div class="urun">Zımba makinesi 24/6 max 30 sayfa code: 103</div>
+  <div class="urun">Zımba makinesi 24/6 max 25 sayfa code: 785</div>
+  <div class="urun">Zımba makinesi Arşiv Tipi 23/10 max 50 sayfa code: 391</div>
+  <div class="urun">Zımba makinesi Arşiv Tipi 24/6,24/10,23/10,23/13, max50 sayfa code: HS-1000</div>
+  <div class="urun">Zımba makinesi Arşiv Tipi 23/6,23/13 max 100 yaprak code: LT326</div>
+  <div class="urun">Zımba makinesi Arşiv Tipi 23/6, 23/8, 23/17 max 150 sayfa code: 792</div>
+  <div class="urun">Zımba makinasi Arşiv Tipi 23/13, 23/6 max 100 sayfa code: HD-100</div>
+  <div class="urun">Zımba makinesi Arşiv Tipi 23/6, 23/13, 23/23 max 200 sayfa code: 794</div>
+  <div class="urun">Zımba makinesi Arşiv Tipi 23/6, 23/24 max 210 sayfa code: Lt327</div>
+</div>
+
+<script>
+  const accordions = document.querySelectorAll('.accordion');
+  accordions.forEach((acc) => {
+    acc.addEventListener('click', () => {
+      const panel = acc.nextElementSibling;
+      if (panel.style.display === 'block') {
+        panel.style.display = 'none';
+      } else {
+        panel.style.display = 'block';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
   <p>İletişim: 0552 482 0136 | ozzirve_2161482@hotmail.com</p>
 </body>
 </html>
