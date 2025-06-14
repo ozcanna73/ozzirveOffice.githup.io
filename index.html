@@ -5,155 +5,158 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Özzirve Kırtasiye Ürünleri</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f4f4f4;
-      color: #333;
-      padding: 20px;
-      margin: 0;
-    }
-    h1, h2 {
-      text-align: center;
-      color: #2c3e50;
-      margin-bottom: 10px;
-    }
-    h2 {
-      margin-bottom: 20px;
-      font-weight: normal;
-    }
-    img {
-      display: block;
-      margin: 0 auto 20px auto;
-      max-width: 300px;
-      width: 100%;
-      height: auto;
-    }
-    .search-container {
-      display: flex;
-      justify-content: center;
-      margin: 20px auto;
-    }
-    .search-box {
-      width: 90%;
-      max-width: 500px;
-      position: relative;
-    }
-    .search-box input {
-      width: 100%;
-      padding: 12px 18px 12px 45px;
-      border: 2px solid #c0392b;
-      border-radius: 30px;
-      font-size: 1em;
-      outline: none;
-    }
-    .search-box::before {
-      content: "🔍";
-      position: absolute;
-      top: 11px;
-      left: 16px;
-      font-size: 1.2em;
-      color: #c0392b;
-      user-select: none;
-    }
-    .boxes-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .box {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 15px;
-      flex: 1 1 280px;
-      max-width: 280px;
-    }
-    .box h3 {
-      text-align: center;
-      color: #34495e;
-      margin-bottom: 10px;
-      font-size: 1.1em;
-    }
-    .product-list {
-      display: flex;
-      overflow-x: auto;
-      gap: 10px;
-      padding-bottom: 8px;
-      scrollbar-width: thin;
-      scrollbar-color: #c0392b #f0f0f0;
-    }
-    .product-list::-webkit-scrollbar {
-      height: 8px;
-    }
-    .product-list::-webkit-scrollbar-thumb {
-      background-color: #c0392b;
-      border-radius: 8px;
-    }
-    .product-list::-webkit-scrollbar-track {
-      background-color: #f0f0f0;
-    }
-    .urun {
-      min-width: 160px;
-      background-color: #ecf0f1;
-      border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      font-size: 0.95em;
-      color: #2c3e50;
-      font-weight: 500;
-      white-space: normal;
-      flex-shrink: 0;
-      cursor: default;
-      transition: background-color 0.3s;
-    }
-    .urun:hover {
-      background-color: #d6dbdf;
-    }
-    footer {
-      margin-top: 40px;
-      padding: 15px 0;
-      border-top: 1px solid #ccc;
-      font-size: 0.9em;
-      text-align: center;
-      color: #555;
-      position: relative;
-    }
-    .footer-icons {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin: 10px 0;
-    }
-    .footer-icons svg {
-      width: 30px;
-      height: 30px;
-      fill: #c0392b;
-      transition: fill 0.3s;
-    }
-    .footer-icons svg:hover {
-      fill: #e74c3c;
-    }
-    .footer-text {
-      margin-top: 10px;
-      font-weight: bold;
-      color: #c0392b;
-    }
-    @media screen and (max-width: 768px) {
-      .boxes-container {
-        flex-direction: column;
-        align-items: center;
-      }
-      .box {
-        max-width: 95%;
-      }
-      .product-list {
-        justify-content: flex-start;
-      }
-    }
+   * {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  padding: 20px;
+  margin: 0;
+}
+h1, h2 {
+  text-align: center;
+  color: #2c3e50;
+}
+h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+h2 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+img {
+  display: block;
+  margin: 0 auto 20px auto;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 0 10px;
+}
+.search-box {
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+}
+.search-box input {
+  width: 100%;
+  padding: 12px 18px 12px 45px;
+  border: 2px solid #c0392b;
+  border-radius: 30px;
+  font-size: 1em;
+  outline: none;
+}
+.search-box::before {
+  content: "🔍";
+  position: absolute;
+  top: 11px;
+  left: 16px;
+  font-size: 1.2em;
+  color: #c0392b;
+  user-select: none;
+}
+.boxes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+.box {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 15px;
+}
+.box h3 {
+  text-align: center;
+  color: #34495e;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+.product-list {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #c0392b #f0f0f0;
+}
+.product-list::-webkit-scrollbar {
+  height: 8px;
+}
+.product-list::-webkit-scrollbar-thumb {
+  background-color: #c0392b;
+  border-radius: 8px;
+}
+.product-list::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+.urun {
+  min-width: 160px;
+  background-color: #ecf0f1;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 0.95em;
+  color: #2c3e50;
+  font-weight: 500;
+  white-space: normal;
+  flex-shrink: 0;
+  cursor: default;
+  transition: background-color 0.3s;
+}
+.urun:hover {
+  background-color: #d6dbdf;
+}
+footer {
+  margin-top: 40px;
+  padding: 15px 0;
+  border-top: 1px solid #ccc;
+  font-size: 0.9em;
+  text-align: center;
+  color: #555;
+}
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 10px 0;
+}
+.footer-icons svg {
+  width: 30px;
+  height: 30px;
+  fill: #c0392b;
+  transition: fill 0.3s;
+}
+.footer-icons svg:hover {
+  fill: #e74c3c;
+}
+.footer-text {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #c0392b;
+}
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.1rem;
+  }
+  .urun {
+    min-width: 140px;
+    font-size: 0.85em;
+  }
+}
+
   </style>
 </head>
 <body>
