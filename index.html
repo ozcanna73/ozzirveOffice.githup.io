@@ -31,7 +31,6 @@
       width: 100%;
       height: auto;
     }
-
     .search-container {
       display: flex;
       justify-content: center;
@@ -51,7 +50,7 @@
       outline: none;
     }
     .search-box::before {
-      content: "\1F50D";
+      content: "🔍";
       position: absolute;
       top: 11px;
       left: 16px;
@@ -59,14 +58,12 @@
       color: #c0392b;
       user-select: none;
     }
-
     .boxes-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
     }
-
     .box {
       background: white;
       border-radius: 12px;
@@ -75,14 +72,12 @@
       flex: 1 1 280px;
       max-width: 280px;
     }
-
     .box h3 {
       text-align: center;
       color: #34495e;
       margin-bottom: 10px;
       font-size: 1.1em;
     }
-
     .product-list {
       display: flex;
       overflow-x: auto;
@@ -101,7 +96,6 @@
     .product-list::-webkit-scrollbar-track {
       background-color: #f0f0f0;
     }
-
     .urun {
       min-width: 160px;
       background-color: #ecf0f1;
@@ -119,7 +113,6 @@
     .urun:hover {
       background-color: #d6dbdf;
     }
-
     footer {
       margin-top: 40px;
       padding: 15px 0;
@@ -129,31 +122,26 @@
       color: #555;
       position: relative;
     }
-
     .footer-icons {
       display: flex;
       justify-content: center;
       gap: 25px;
       margin: 10px 0;
     }
-
     .footer-icons svg {
       width: 30px;
       height: 30px;
       fill: #c0392b;
       transition: fill 0.3s;
     }
-
     .footer-icons svg:hover {
       fill: #e74c3c;
     }
-
     .footer-text {
       margin-top: 10px;
       font-weight: bold;
       color: #c0392b;
     }
-
     @media screen and (max-width: 768px) {
       .boxes-container {
         flex-direction: column;
@@ -169,136 +157,125 @@
   </style>
 </head>
 <body>
-
   <h1>Özzirve Office'e Hoş Geldiniz</h1>
   <img src="özzirvekırtasiye(1)(1).png" alt="Özzirve Kırtasiye Logo" />
-
   <div class="search-container">
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="Ürün ara...">
     </div>
   </div>
-
   <h2>Kırtasiye Ürünler</h2>
-
   <div class="boxes-container" id="boxes">
-    <!-- Var olan kutular burada -->
-    <!-- Yeni kutular ve güncellemeler aşağıda -->
 
-    <!-- Yardımcı Malzemeler -->
+    <!-- Var olan kutular -->
     <div class="box">
-      <h3>Yardımcı Malzemeler</h3>
+      <h3>A4, A3, A5 Kağıt ve Benzerleri</h3>
       <div class="product-list">
-        <div class="urun">Masa ayracı</div>
-        <div class="urun">Masa takvimi</div>
-        <div class="urun">Para lastiği</div>
-        <div class="urun">Makas</div>
+        <div class="urun">A3 kağıt 500'lü paket</div>
+        <div class="urun">A5 kağıt 500'lü paket</div>
+        <div class="urun">Nagivator A4 kağıt 160 gr 250'li paket</div>
+        <div class="urun">Kraft kağıt A4 100'lü paket</div>
+        <div class="urun">A4 Kağıt 500'lü paket</div>
       </div>
     </div>
 
-    <!-- Maket Bıçakları ve Uçları -->
     <div class="box">
-      <h3>Maket Bıçakları ve Maket Uçları</h3>
+      <h3>Zarflar</h3>
       <div class="product-list">
-        <div class="urun">Maket Bıçağı</div>
-        <div class="urun">Maket Ucu</div>
+        <div class="urun">Diplomat zarf 105x240 500'lü</div>
+        <div class="urun">Kare zarf 114x162 500'lü</div>
+        <div class="urun">CD zarf pencereli 1000'li</div>
+        <div class="urun">A5 zarf 17x25 250'li</div>
+        <div class="urun">A4 zarf 24x32 250'li</div>
+        <div class="urun">A3 zarf 30x40 250'li</div>
       </div>
     </div>
 
-    <!-- Ataş çeşitleri -->
     <div class="box">
-      <h3>Ataş Çeşitleri</h3>
+      <h3>Klasörler</h3>
       <div class="product-list">
-        <div class="urun">2 Numaralı Ataş</div>
-        <div class="urun">3 Numaralı Ataş</div>
-        <div class="urun">4 Numaralı Ataş</div>
-        <div class="urun">5 Numaralı Ataş</div>
-        <div class="urun">Ataş 2 numaralı (Renkli)</div>
-        <div class="urun">Ataş 3 Numaralı (Renkli)</div>
-        <div class="urun">Ataş 4 Numaralı (Renkli)</div>
-        <div class="urun">Ataş 5 Numaralı (Renkli)</div>
+        <div class="urun">A4 Geniş Klasör (Renkli)</div>
+        <div class="urun">A4 Dar Klasör (Renkli)</div>
+        <div class="urun">Karton klasör</div>
+        <div class="urun">Geniş karton dosya</div>
       </div>
     </div>
 
-    <!-- Masaüstü Kalemlikler -->
-    <div class="box">
-      <h3>Masaüstü Kalemlikler</h3>
-      <div class="product-list">
-        <div class="urun">Masaüstü kalemlik</div>
-        <div class="urun">Masa üstü Bant'lık</div>
-      </div>
-    </div>
+    <div class="box"><h3>Zımba Makineler</h3><div class="product-list"><div class="urun">Zımba</div></div></div>
+    <div class="box"><h3>Delgeç Makineler</h3><div class="product-list"><div class="urun">Delgeç</div></div></div>
 
-    <!-- Çelik Kıskaç -->
-    <div class="box">
-      <h3>Çelik Kıskaç</h3>
-      <div class="product-list">
-        <div class="urun">Çelik Kıskaç 19mm Mas 12'li Adet</div>
-        <div class="urun">Çelik Kıskaç 25mm Mas 12'li Adet</div>
-        <div class="urun">Çelik Kıskaç 32mm Mas 12'li Adet</div>
-        <div class="urun">Çelik Kıskaç 41mm Mas 12 Adet</div>
-        <div class="urun">Çelik Kıskaç 51mm Mas 12'li Adet</div>
-      </div>
-    </div>
+    <div class="box"><h3>Masaüstü Kalemlikler</h3><div class="product-list">
+      <div class="urun">Masaüstü kalemlik</div>
+      <div class="urun">Masa üstü Bant'lık</div>
+    </div></div>
 
-    <!-- Ayraç & Seperatörler -->
-    <div class="box">
-      <h3>Ayraç & Seperatörler</h3>
-      <div class="product-list">
-        <div class="urun">Seperatör A4 1-31 Rakamlı (Ayraç)</div>
-        <div class="urun">Seperatör A4 1-20 Rakamlı (Ayraç)</div>
-        <div class="urun">Seperatör A4 1-12 Rakamlı (Ayraç)</div>
-        <div class="urun">Seperatör A4 1-10 Rakamlı (Ayraç)</div>
-        <div class="urun">Seperatör A4 1-5 Rakamlı (Ayraç)</div>
-        <div class="urun">Seperatör A4 10'lu Renkli (Ayraç)</div>
-        <div class="urun">Seperatör A4 5'li Renkli (Ayraç)</div>
-        <div class="urun">Seperatör A4 A-Z Harfli (Ayraç)</div>
-      </div>
-    </div>
+    <div class="box"><h3>Kalemler</h3><div class="product-list">
+      <div class="urun">Tükenmez kalem</div>
+      <div class="urun">Pilot kalem</div>
+    </div></div>
 
-    <!-- Ofis Bant Çeşitleri -->
-    <div class="box">
-      <h3>Ofis Bant Çeşitleri</h3>
-      <div class="product-list">
-        <div class="urun">Mas Akrilik Koli Bant 45 mm x 100 metre (6'lı paket)</div>
-        <div class="urun">Mas Koli Bant Şeffaf 45 mm x 40 Metre (6 Lı Paket)</div>
-        <div class="urun">Mas Selobant 25mm x 66 metre</div>
-        <div class="urun">Mas Seloteyp Bant – Bal – 12 mm x 33 metre</div>
-        <div class="urun">Bigpoint Bant 12 mm x 33 metre</div>
-        <div class="urun">Bigpoint Bant 12 mm x 66 metre</div>
-        <div class="urun">Bigpoint Koli Bant 45 mm x 100 metre Şeffaf</div>
-        <div class="urun">Bigpoint Koli Bant 45 mm x 40 metre Şeffaf</div>
-        <div class="urun">Bigpoint Çift Taraflı Köpük Bant 12mm x 5metre</div>
-        <div class="urun">Bigpoint Çift Taraflı Köpük Bant 25 mm x 5 metre</div>
-        <div class="urun">Mas Çift taraflı Köpük Bant 25mm x 5 metre</div>
-        <div class="urun">Mas Çift taraflı Köpük Bant 12mm x 5 metre</div>
-      </div>
-    </div>
+    <div class="box"><h3>Yardımcı Malzemeler</h3><div class="product-list">
+      <div class="urun">Masa ayracı</div>
+      <div class="urun">Masa takvimi</div>
+      <div class="urun">Para lastik</div>
+      <div class="urun">Makas</div>
+    </div></div>
 
-    <!-- Hesap Makineleri -->
-    <div class="box">
-      <h3>Hesap Makineleri</h3>
-      <div class="product-list">
-        <div class="urun">Casio Hesap Makinesi</div>
-      </div>
-    </div>
+    <div class="box"><h3>Evrak Rafları</h3><div class="product-list">
+      <div class="urun">3'lü plastik evrak rafı</div>
+    </div></div>
 
-    <!-- Mürekkep Çeşitleri -->
-    <div class="box">
-      <h3>Mürekkep Çeşitleri</h3>
-      <div class="product-list">
-        <div class="urun">Dolma Kalem Mürekkebi</div>
-      </div>
-    </div>
+    <!-- Yeni kutular -->
+    <div class="box"><h3>Maket bıcakları ve Maket uçları</h3><div class="product-list"></div></div>
 
-    <!-- Yaka Kart ve Yaka İpleri -->
-    <div class="box">
-      <h3>Yaka Kart ve Yaka İpleri</h3>
-      <div class="product-list">
-        <div class="urun">Yaka Kartı</div>
-        <div class="urun">Yaka İpi</div>
-      </div>
-    </div>
+    <div class="box"><h3>Ataş çeşitleri</h3><div class="product-list">
+      <div class="urun">2 Numaralı Ataş</div>
+      <div class="urun">3 Numaralı Ataş</div>
+      <div class="urun">4 Numaralı Ataş</div>
+      <div class="urun">5 Numaralı Ataş</div>
+      <div class="urun">Ataş 2 numaralı (Renkli)</div>
+      <div class="urun">Ataş 3 Numaralı (Renkli)</div>
+      <div class="urun">Ataş 4 Numaralı (Renkli)</div>
+      <div class="urun">Ataş 5 Numaralı (Renkli)</div>
+    </div></div>
+
+    <div class="box"><h3>Çelik Kıskaç</h3><div class="product-list">
+      <div class="urun">Çelik Kıskaç 19mm Mas 12'li Adet</div>
+      <div class="urun">Çelik Kıskaç 25mm Mas 12'li Adet</div>
+      <div class="urun">Çelik Kıskaç 32mm Mas 12'li Adet</div>
+      <div class="urun">Çelik Kıskaç 41mm Mas 12 Adet</div>
+      <div class="urun">Çelik Kıskaç 51mm Mas 12'li Adet</div>
+    </div></div>
+
+    <div class="box"><h3>Ayraç & Seperatörler</h3><div class="product-list">
+      <div class="urun">Seperatör A4 1-31 Rakamlı (Ayraç)</div>
+      <div class="urun">Seperatör A4 1-20 Rakamlı (Ayraç)</div>
+      <div class="urun">Seperatör A4 1-12 Rakamlı (Ayraç)</div>
+      <div class="urun">Seperatör A4 1-10 Rakamlı (Ayraç)</div>
+      <div class="urun">Seperatör A4 1-5 Rakamlı (Ayraç)</div>
+      <div class="urun">Seperatör A4 10'lu Renkli (Ayraç)</div>
+      <div class="urun">Seperatör A4 5'li Renkli (Ayraç)</div>
+      <div class="urun">Seperatör A4 A-Z Harfli (Ayraç)</div>
+    </div></div>
+
+    <div class="box"><h3>Ofis Bant çeşitleri</h3><div class="product-list">
+      <div class="urun">Mas Akrilik Koli Bant 45 mm x 100 metre (6'lı paket)</div>
+      <div class="urun">Mas Koli Bant Şeffaf 45 mm x 40 Metre (6 Lı Paket)</div>
+      <div class="urun">Mas Selobant 25mm x 66 metre</div>
+      <div class="urun">Mas Seloteyp Bant – Bal – 12 mm x 33 metre</div>
+      <div class="urun">Bigpoint Bant 12 mm x 33 metre</div>
+      <div class="urun">Bigpoint Bant 12 mm x 66 metre</div>
+      <div class="urun">Bigpoint Koli Bant 45 mm x 100 metre Şeffaf</div>
+      <div class="urun">Bigpoint Koli Bant 45 mm x 40 metre Şeffaf</div>
+      <div class="urun">Bigpoint Çift Taraflı Köpük Bant 12mm x 5metre</div>
+      <div class="urun">Bigpoint Çift Taraflı Köpük Bant 25 mm x 5 metre</div>
+      <div class="urun">Mas Çift taraflı Köpük Bant 25mm x 5 metre</div>
+      <div class="urun">Mas Çift taraflı Köpük Bant 12mm x 5 metre</div>
+    </div></div>
+
+    <div class="box"><h3>Hesap makineleri</h3><div class="product-list"></div></div>
+    <div class="box"><h3>Mürekkep Çeşitleri</h3><div class="product-list"></div></div>
+    <div class="box"><h3>Yaka Kart ve Yaka ipleri</h3><div class="product-list"></div></div>
 
   </div>
 
@@ -341,6 +318,5 @@
       });
     });
   </script>
-
 </body>
 </html>
