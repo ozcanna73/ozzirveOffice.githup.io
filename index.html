@@ -1,211 +1,196 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Özzirve Kırtasiye Ürünleri</title>
-<style>
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f4f4f4;
-    color: #333;
-    padding: 20px;
-    margin: 0;
-  }
-  h1, h2 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 10px;
-  }
-  h2 {
-    margin-bottom: 20px;
-    font-weight: normal;
-  }
-  img {
-    display: block;
-    margin: 0 auto 20px auto;
-    max-width: 300px;
-    width: 100%;
-    height: auto;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Özzirve Kırtasiye Ürünleri</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      padding: 20px;
+      margin: 0;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+    img {
+      display: block;
+      margin: 0 auto 20px auto;
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+    }
 
-  /* Arama kutusu */
-  .search-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px auto;
-  }
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px auto;
+    }
+    .search-box {
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 12px 18px 12px 45px;
+      border: 2px solid #c0392b;
+      border-radius: 30px;
+      font-size: 1em;
+      outline: none;
+    }
+    .search-box::before {
+      content: "🔍";
+      position: absolute;
+      top: 11px;
+      left: 16px;
+      font-size: 1.2em;
+      color: #c0392b;
+      user-select: none;
+    }
 
-  .search-box {
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-  }
+    .top-icons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 15px 0;
+    }
+    .icon-wrapper {
+      position: relative;
+      color: #c0392b;
+      font-size: 30px;
+      cursor: default;
+      user-select: none;
+    }
+    .icon-wrapper svg {
+      width: 36px;
+      height: 36px;
+      fill: #c0392b;
+      transition: fill 0.3s;
+    }
+    .icon-wrapper:hover svg {
+      fill: #e74c3c;
+    }
+    .tooltip {
+      position: absolute;
+      top: 45px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #c0392b;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.85em;
+      white-space: nowrap;
+      display: none;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .icon-wrapper:hover .tooltip {
+      display: block;
+    }
 
-  .search-box input {
-    width: 100%;
-    padding: 12px 18px 12px 45px;
-    border: 2px solid #c0392b;
-    border-radius: 30px;
-    font-size: 1em;
-    outline: none;
-  }
+    .delivery-text {
+      text-align: center;
+      color: #c0392b;
+      font-weight: bold;
+      font-size: 1.1em;
+      margin: 15px 0;
+    }
 
-  .search-box::before {
-    content: "🔍";
-    position: absolute;
-    top: 11px;
-    left: 16px;
-    font-size: 1.2em;
-    color: #c0392b;
-    user-select: none;
-  }
-
-  /* Üst ikonlar */
-  .top-icons {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin: 15px 0;
-  }
-
-  .icon-wrapper {
-    position: relative;
-    color: #c0392b;
-    font-size: 30px;
-    cursor: default;
-    user-select: none;
-  }
-
-  .icon-wrapper svg {
-    width: 36px;
-    height: 36px;
-    fill: #c0392b;
-    transition: fill 0.3s;
-  }
-
-  .icon-wrapper:hover svg {
-    fill: #e74c3c;
-  }
-
-  .tooltip {
-    position: absolute;
-    top: 45px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #c0392b;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 0.85em;
-    white-space: nowrap;
-    display: none;
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  .icon-wrapper:hover .tooltip {
-    display: block;
-  }
-
-  .delivery-text {
-    text-align: center;
-    color: #c0392b;
-    font-weight: bold;
-    font-size: 1.1em;
-    margin: 15px 0;
-  }
-
-  /* Ürün kutuları */
-  .boxes-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  .box {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 15px;
-    flex: 1 1 280px;
-    max-width: 280px;
-  }
-
-  .box h3 {
-    text-align: center;
-    color: #34495e;
-    margin-bottom: 10px;
-    font-size: 1.1em;
-  }
-
-  .product-list {
-    display: flex;
-    overflow-x: auto;
-    gap: 10px;
-    padding-bottom: 8px;
-    scrollbar-width: thin;
-    scrollbar-color: #c0392b #f0f0f0;
-  }
-
-  .product-list::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .product-list::-webkit-scrollbar-thumb {
-    background-color: #c0392b;
-    border-radius: 8px;
-  }
-
-  .product-list::-webkit-scrollbar-track {
-    background-color: #f0f0f0;
-  }
-
-  .urun {
-    min-width: 160px;
-    background-color: #ecf0f1;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    font-size: 0.95em;
-    color: #2c3e50;
-    font-weight: 500;
-    white-space: normal;
-    flex-shrink: 0;
-    cursor: default;
-    transition: background-color 0.3s;
-  }
-
-  .urun:hover {
-    background-color: #d6dbdf;
-  }
-
-  footer {
-    margin-top: 40px;
-    padding: 15px 0;
-    border-top: 1px solid #ccc;
-    font-size: 0.9em;
-    text-align: center;
-    color: #555;
-  }
-
-  @media screen and (max-width: 768px) {
     .boxes-container {
-      flex-direction: column;
-      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
     }
+
     .box {
-      max-width: 95%;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 15px;
+      flex: 1 1 280px;
+      max-width: 280px;
     }
+
+    .box h3 {
+      text-align: center;
+      color: #34495e;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+
     .product-list {
-      justify-content: flex-start;
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: #c0392b #f0f0f0;
     }
-  }
-</style>
+    .product-list::-webkit-scrollbar {
+      height: 8px;
+    }
+    .product-list::-webkit-scrollbar-thumb {
+      background-color: #c0392b;
+      border-radius: 8px;
+    }
+    .product-list::-webkit-scrollbar-track {
+      background-color: #f0f0f0;
+    }
+
+    .urun {
+      min-width: 160px;
+      background-color: #ecf0f1;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-size: 0.95em;
+      color: #2c3e50;
+      font-weight: 500;
+      white-space: normal;
+      flex-shrink: 0;
+      cursor: default;
+      transition: background-color 0.3s;
+    }
+    .urun:hover {
+      background-color: #d6dbdf;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 15px 0;
+      border-top: 1px solid #ccc;
+      font-size: 0.9em;
+      text-align: center;
+      color: #555;
+    }
+
+    @media screen and (max-width: 768px) {
+      .boxes-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .box {
+        max-width: 95%;
+      }
+      .product-list {
+        justify-content: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -218,20 +203,24 @@
     </div>
   </div>
 
-  <h2>Kırtasiye Ürünler</h2>
-
   <div class="top-icons">
     <div class="icon-wrapper" tabindex="0" aria-label="Siparişleriniz de aynı gün teslimat">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M6 48a6 6 0 1 0 12 0 6 6 0 0 0-12 0zm38 0a6 6 0 1 0 12 0 6 6 0 0 0-12 0zM20 12h26l8 16v12H18v-4l2-8z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M6 48a6 6 0 1 0 12 0 6 6 0 0 0-12 0zm38 0a6 6 0 1 0 12 0 6 6 0 0 0-12 0zM20 12h26l8 16v12H18v-4l2-8z"/>
+      </svg>
       <div class="tooltip">Siparişleriniz de aynı gün teslimat</div>
     </div>
     <div class="icon-wrapper" tabindex="0" aria-label="26 Yıllık Deneyim">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 12 L12 32 H20 V52 H28 V40 H36 V52 H44 V32 H52 Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M32 12 L12 32 H20 V52 H28 V40 H36 V52 H44 V32 H52 Z"/>
+      </svg>
       <div class="tooltip">26 Yıllık Deneyim</div>
     </div>
   </div>
 
   <div class="delivery-text">Siparişleriniz de aynı gün teslimat</div>
+
+  <h2>Kırtasiye Ürünler</h2>
 
   <div class="boxes-container" id="boxes">
 
@@ -299,31 +288,30 @@
     &copy; 2025 Özzirve Kırtasiye - Tüm Hakları Saklıdır
   </footer>
 
-<script>
-  const searchInput = document.getElementById('searchInput');
-  const boxes = document.getElementById('boxes');
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const boxes = document.getElementById('boxes');
 
-  searchInput.addEventListener('input', function () {
-    const searchTerm = this.value.toLowerCase();
+    searchInput.addEventListener('input', function () {
+      const searchTerm = this.value.toLowerCase();
+      const boxesChildren = boxes.querySelectorAll('.box');
 
-    const boxesChildren = boxes.querySelectorAll('.box');
-    boxesChildren.forEach(box => {
-      let hasMatchInBox = false;
-      const products = box.querySelectorAll('.urun');
-      products.forEach(product => {
-        const text = product.textContent.toLowerCase();
-        if (text.includes(searchTerm)) {
-          product.style.display = '';
-          hasMatchInBox = true;
-        } else {
-          product.style.display = 'none';
-        }
+      boxesChildren.forEach(box => {
+        let hasMatchInBox = false;
+        const products = box.querySelectorAll('.urun');
+        products.forEach(product => {
+          const text = product.textContent.toLowerCase();
+          if (text.includes(searchTerm)) {
+            product.style.display = '';
+            hasMatchInBox = true;
+          } else {
+            product.style.display = 'none';
+          }
+        });
+        box.style.display = hasMatchInBox ? '' : 'none';
       });
-      // Kutuyu göster/gizle arama sonucu yoksa
-      box.style.display = hasMatchInBox ? '' : 'none';
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
