@@ -275,5 +275,35 @@
     </div>
   </footer>
   <script src="script.js"></script>
+  <!-- Sayfanın sonunda -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const urunler = document.querySelectorAll("a.urun");
+
+    urunler.forEach((urun) => {
+      urun.addEventListener("click", function (e) {
+        const detay = this.querySelector(".urun-detay");
+
+        // Eğer detay açıksa kapat, değilse aç
+        if (detay.classList.contains("acik")) {
+          detay.classList.remove("acik");
+        } else {
+          // Diğer tüm detayları kapat
+          document.querySelectorAll(".urun-detay.acik").forEach((acikDetay) => {
+            acikDetay.classList.remove("acik");
+          });
+          // Bu detayı aç
+          detay.classList.add("acik");
+        }
+
+        // Sayfa başka yere gitmesin
+        e.preventDefault();
+      });
+    });
+  });
+</script>
 </body>
 </html>
+
+
