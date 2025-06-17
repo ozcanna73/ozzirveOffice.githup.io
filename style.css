@@ -1,4 +1,4 @@
-  <style>
+<style>
 * {
   box-sizing: border-box;
 }
@@ -124,12 +124,49 @@ img {
   white-space: normal;
   flex-shrink: 0;
   cursor: default;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .urun:hover {
   background-color: #d6dbdf;
+}
+
+/* ÜRÜN DETAY GİZLİ HALİ */
+.urun-detay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid #ccc;
+  padding: 10px 12px;
+  font-size: 0.92em;
+  color: #2c3e50;
+  text-align: left;
+  line-height: 1.5;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 2;
+}
+
+.urun:hover .urun-detay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.urun-detay p {
+  margin: 6px 0;
+}
+
+.urun-detay p strong {
+  color: #c0392b;
+  font-weight: 600;
 }
 
 footer {
@@ -164,21 +201,22 @@ footer {
   font-weight: bold;
   color: #c0392b;
 }
-.urun-detay {
-  margin-top: 10px;
-  padding: 8px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 0.9em;
-  color: #444;
-  text-align: left;
-  line-height: 1.5;
+
+/* === MOBİL: Hover çalışmaz, detaylar açık olsun === */
+@media (hover: none) and (pointer: coarse) {
+  .urun-detay {
+    position: static;
+    transform: none !important;
+    opacity: 1 !important;
+    box-shadow: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    border-radius: 6px;
+  }
 }
-.urun-detay p {
-  margin: 4px 0;
-}
-/* === MOBİL OPTİMİZASYON === */
+
+/* === MOBİL GENEL DÜZEN === */
 @media (max-width: 768px) {
   h1 {
     font-size: 1.6rem;
@@ -213,5 +251,4 @@ footer {
     overflow-x: hidden;
   }
 }
-
-  </style>
+</style>
