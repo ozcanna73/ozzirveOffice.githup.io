@@ -103,10 +103,11 @@ img {
 a.urun {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
   font-size: 1em;
   color: #2c3e50;
   font-weight: 500;
@@ -118,16 +119,24 @@ a.urun {
 }
 
 a.urun:hover {
-  background-color: #f0f0f0;
-  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+  background-color: #fafafa;
 }
 
 a.urun img {
   width: 100%;
-  max-height: 120px;
+  max-height: 150px;
   object-fit: contain;
   border-radius: 8px;
   margin-bottom: 10px;
+}
+
+a.urun p {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
 }
 
 .urun-detay {
@@ -160,8 +169,32 @@ a.urun:hover .urun-detay {
 }
 
 .urun-detay p strong {
-  color: #c0392b;
+  color: #e60023;
   font-weight: 600;
+}
+
+/* === MOBİL: Hover yoksa detaylar açık olsun === */
+@media (hover: none) and (pointer: coarse) {
+  .urun-detay {
+    position: static;
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    height: 0;
+    overflow: hidden;
+    border: none;
+    background: #fff;
+    box-shadow: none;
+    margin-top: 8px;
+    border-radius: 6px;
+  }
+
+  .urun-detay.acik {
+    transform: scaleY(1);
+    opacity: 1;
+    height: auto;
+  }
 }
 
 footer {
@@ -197,39 +230,7 @@ footer {
   color: #c0392b;
 }
 
-/* === MOBİL (hover yoksa detaylar açık olsun) === */
-@media (hover: none) and (pointer: coarse) {
-  .urun-detay {
-    position: static;
-    transform: scaleY(0);
-    transform-origin: top;
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    height: 0;
-    overflow: hidden;
-    border: none;
-    background: #fff;
-    box-shadow: none;
-    margin-top: 8px;
-    border-radius: 6px;
-  }
-
-  .urun-detay.acik {
-    transform: scaleY(1);
-    opacity: 1;
-    height: auto;
-  }
-}
-a.urun {
-    padding: 14px;
-  }
-
-  a.urun img {
-    max-height: 150px;
-  }
-}
-
-/* === EKRANLARA GÖRE ÜRÜN SÜTUN DİZİLİMİ === */
+/* === DİNAMİK GRID DESTEĞİ === */
 @media (max-width: 1024px) {
   .product-list {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -246,7 +247,7 @@ a.urun {
   }
 
   .boxes-container {
-    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    grid-template-columns: 1fr;
     gap: 16px;
     padding: 8px;
   }
@@ -260,7 +261,7 @@ a.urun {
     gap: 12px;
   }
 
-  .urun {
+  a.urun {
     font-size: 0.95em;
     padding: 10px;
   }
@@ -269,6 +270,7 @@ a.urun {
     max-height: 120px;
   }
 }
+
 @media (max-width: 480px) {
   body {
     padding: 10px;
