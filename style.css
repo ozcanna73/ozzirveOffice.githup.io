@@ -75,11 +75,16 @@ img {
 
 .box {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
   padding: 15px;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.box:hover {
+  transform: translateY(-3px);
 }
 
 .box h3 {
@@ -96,23 +101,33 @@ img {
 }
 
 a.urun {
-  display: block;
-  background-color: #ecf0f1;
-  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 12px;
   padding: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   font-size: 1em;
   color: #2c3e50;
   font-weight: 500;
   text-align: center;
   position: relative;
   overflow: hidden;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   text-decoration: none;
 }
 
 a.urun:hover {
-  background-color: #d6dbdf;
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+a.urun img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .urun-detay {
@@ -127,7 +142,7 @@ a.urun:hover {
   color: #2c3e50;
   text-align: left;
   line-height: 1.5;
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 12px 12px;
   box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
   transform: translateY(100%);
   opacity: 0;
@@ -194,6 +209,14 @@ footer {
     margin-top: 10px;
     border-radius: 6px;
   }
+
+  a.urun {
+    padding: 14px;
+  }
+
+  a.urun img {
+    max-height: 150px;
+  }
 }
 
 /* === EKRANLARA GÖRE ÜRÜN SÜTUN DİZİLİMİ === */
@@ -223,12 +246,16 @@ footer {
   }
 
   .product-list {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
   .urun {
     font-size: 0.95em;
     padding: 10px;
+  }
+
+  a.urun img {
+    max-height: 120px;
   }
 }
