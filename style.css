@@ -91,29 +91,12 @@ img {
 }
 
 .product-list {
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  padding-bottom: 8px;
-  scrollbar-width: thin;
-  scrollbar-color: #c0392b #f0f0f0;
-}
-
-.product-list::-webkit-scrollbar {
-  height: 8px;
-}
-
-.product-list::-webkit-scrollbar-thumb {
-  background-color: #c0392b;
-  border-radius: 8px;
-}
-
-.product-list::-webkit-scrollbar-track {
-  background-color: #f0f0f0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
 }
 
 .urun {
-  min-width: 180px;
   background-color: #ecf0f1;
   border-radius: 8px;
   padding: 12px;
@@ -121,20 +104,16 @@ img {
   font-size: 1em;
   color: #2c3e50;
   font-weight: 500;
-  white-space: normal;
-  flex-shrink: 0;
-  cursor: default;
-  transition: background-color 0.3s ease;
   text-align: center;
   position: relative;
   overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
 .urun:hover {
   background-color: #d6dbdf;
 }
 
-/* ÜRÜN DETAY GİZLİ HALİ */
 .urun-detay {
   position: absolute;
   bottom: 0;
@@ -202,7 +181,7 @@ footer {
   color: #c0392b;
 }
 
-/* === MOBİL: Hover çalışmaz, detaylar açık olsun === */
+/* === MOBİL (hover yoksa detaylar açık olsun) === */
 @media (hover: none) and (pointer: coarse) {
   .urun-detay {
     position: static;
@@ -216,7 +195,13 @@ footer {
   }
 }
 
-/* === MOBİL GENEL DÜZEN === */
+/* === EKRANLARA GÖRE ÜRÜN SÜTUN DİZİLİMİ === */
+@media (max-width: 1024px) {
+  .product-list {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 1.6rem;
@@ -232,23 +217,18 @@ footer {
     padding: 8px;
   }
 
-  .box {
-    padding: 12px;
-  }
-
   .box h3 {
     font-size: 1em;
   }
 
-  .urun {
-    min-width: 100%;
-    font-size: 1em;
-    padding: 10px;
+  .product-list {
+    grid-template-columns: repeat(3, 1fr); /* Her satıra 3 ürün */
+    gap: 10px;
   }
 
-  .product-list {
-    flex-direction: column;
-    overflow-x: hidden;
+  .urun {
+    font-size: 0.95em;
+    padding: 10px;
   }
 }
 </style>
