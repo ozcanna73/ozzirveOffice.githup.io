@@ -164,7 +164,20 @@ footer {
   font-weight: bold;
   color: #c0392b;
 }
-
+.urun-detay {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9em;
+  color: #444;
+  text-align: left;
+  line-height: 1.5;
+}
+.urun-detay p {
+  margin: 4px 0;
+}
 /* === MOBİL OPTİMİZASYON === */
 @media (max-width: 768px) {
   h1 {
